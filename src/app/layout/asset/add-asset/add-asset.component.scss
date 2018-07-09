@@ -1,0 +1,35 @@
+body {
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1;
+}
+.foot-btns {
+    border-top: 2px solid #d1d1d1;   
+}
+.pop-up-image-upload {
+   border-radius: 4px;
+    width: 680px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+	.foot-btns>button {
+    width: 130px;
+    border: 2px solid;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.clos:hover,.add:hover {
+    background-color: transparent;
+    color: #ff404e;
+    border-color: #ff404e;
+}
+ .image-upload {
+    border: 1px solid #dedede;
+}
+.upload-image {
+    top: 50%;
+    right: 0;
+    margin: 0 auto;
+    left: 0;
+    transform: translateY(-50%);
+}

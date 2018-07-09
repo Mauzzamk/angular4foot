@@ -1,31 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { TagInputModule } from 'ngx-chips';
 
 import { AppComponent } from './app.component';
 
 import { UserService } from './user.service';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { Router, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+import { AppRouteModule } from './app-route.module';
+import { AuthGuard } from './auth.guard';
+import { BookServiceService } from './service/book-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastrUtil } from './service/toastr.service';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,FooterComponent,HeaderComponent,LoginFormComponent, DashboardComponent
+    AppComponent
   ],
   imports: [
-
-RouterModule.forRoot([{
-path : 'dashboard' , component : DashboardComponent
-
-}]),
-
-    BrowserModule,
+    AppRouteModule,BrowserModule,BrowserAnimationsModule,ToastrModule.forRoot(),HttpClientModule,TagInputModule
   ],
-  providers: [UserService],
+  providers: [AuthGuard,BookServiceService,ToastrUtil],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

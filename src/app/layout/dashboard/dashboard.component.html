@@ -1,0 +1,17 @@
+<div [@routerTransition]>
+  <h2 class="text-muted">Dashboard Statistics Overview</h2>
+  <div class="row">
+    <ul>
+        <li *ngFor="let book of allBooks$ | async" >
+          Id: {{book.id}}, Name: {{book.name}}, UserName: {{book.username}} 
+        </li>
+      
+      </ul>
+  </div>
+
+  <div>
+<button (click)= "showSuccess()">"click me"</button>
+
+  </div>
+  
+</div>

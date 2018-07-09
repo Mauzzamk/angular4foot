@@ -1,0 +1,163 @@
+<div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      
+
+      <div class="col-md-12 pop-up-image-upload position-absolute py-3 bg-white">
+            <div class="header pb-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="float-left ">
+                            Add Asset
+                        </div>
+                        <div class="float-right">
+                            <a href="#" class="text-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!submitted">
+                    <h1>Reactive Form</h1>
+
+                    <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+                    <div class="row px-3 pb-3">
+                            <div class="col-md-6 col-sm-6 image-upload position-relative bg-light">
+                                
+                                    <a href="#"><img src="assets/img/upload.png" class="upload-image position-absolute" alt="upload"/></a>
+                                   <!--   <div class="form-group">
+                                            <label class="form-control-label">User Image</label>
+                                            <br>
+                                            <input type="file" class="dropify" formControlName="Image" #AccUserImg>
+                                            <br>
+                                            <small>Please upload user image less than 1.5 MB (.jpg, .png, .jpeg, .bmp)</small>
+                                             <div class="alert" *ngIf="!AccConForm.controls['Image'].valid && (AccConForm.controls['Image'].touched)">
+                                              <div [hidden]="!AccConForm.controls['Image'].errors">
+                                                User image required.
+                                              </div> 
+                                            </div> 
+                                          </div> --> 
+                                        
+                            </div>
+                            <div class="col-md-6 col-sm-6 pr-0">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Name:
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Add Product Name" formControlName="name">
+                                    <div class="alert alert-danger" [hidden]="heroForm.controls.name.valid">Name is required</div>
+
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Category:
+                                    </label>
+                                    <div class="dropdown">
+                                        <select class="form-control" formControlName="catagory">
+                                                <option *ngFor="let p of catagory" [value]="p">{{p}}</option>
+                                        </select>
+                                        <div class="alert alert-danger" [hidden]="heroForm.controls.catagory.valid">Catagory is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Classification:
+                                    </label>
+                                    <div class="dropdown">
+                                        <select class="form-control" formControlName="classification">
+                                                <option *ngFor="let q of classification" [value]="q">{{q}}</option>
+                                        </select>
+                                        <div class="alert alert-danger" [hidden]="heroForm.controls.classification.valid">Classification is required</div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Product Department:
+                                    </label>
+                                    <div class="dropdown">
+                                        <select class="form-control" formControlName="department">
+                                                <option *ngFor="let r of department" [value]="r">{{r}}</option>
+
+                                        </select>
+                                        <div class="alert alert-danger" [hidden]="heroForm.controls.department.valid">Department is required</div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Enter Tags:
+                                    </label>
+                                   
+                                    <tag-input [ngModel]="productTags" class="form-control" formControlName="tags"></tag-input>
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Asset Tags" formControlName="tags">  -->
+                                    <div class="alert alert-danger" [hidden]="heroForm.controls.tags.valid">Tags is required</div>
+
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="control-label">
+                                        Asset Name:
+                                    </label>
+                                    <input type="text" class="form-control" placeholder="Enter Asset Name" formControlName="assettype">
+                                    <div class="alert alert-danger" [hidden]="heroForm.controls.assettype.valid">Assettype is required</div>
+
+                                </div>
+                            </div>
+                
+
+
+
+
+
+
+</div>
+
+<div class="col-md-12 col-sm-12 text-right foot-btns pt-3">
+        <button type="submit" class="btn btn-outline-secondary add" [disabled]="!heroForm.valid">ADD ASSET</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+    
+</div>
+
+</form>
+            </div>
+
+    
+       
+      </div>
+      </div>
+
+
+<div *ngIf="submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-md-2">Name</div>
+            <div class="col-md-10 pull-left">{{ submittedModel.name }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Alter Ego</div>
+            <div class="col-md-10 pull-left">{{ submittedModel.catagory }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Hero Email</div>
+            <div class="col-md-10 pull-left">{{ submittedModel.department }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Power</div>
+            <div class="col-md-10 pull-left">{{ submittedModel.classification }}</div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-2">Power</div>
+                <div class="col-md-10 pull-left">{{ submittedModel.productTag }}</div>
+            </div>
+
+            <div class="row">
+                    <div class="col-md-2">Power</div>
+                    <div class="col-md-10 pull-left">{{ submittedModel.classification }}</div>
+                </div>
+        <br />
+        <button class="btn btn-default" (click)="submitted=false">Edit</button>
+    </div> 
